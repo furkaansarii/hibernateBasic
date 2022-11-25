@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration SYSTEM
+      "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+  <session-factory>
+        
+    <!-- MySQL Dialect -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    
+    <!-- Database connection settings -->
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/testdb?characterEncoding=utf8</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123</property>
+    <!-- Hibernate'in atacağı HQL sorgularını gösterir -->
+	<property name="show_sql">true</property>        
+	<!-- Hibernate'in atacağı HQL sorgusunu SQL formatında gösterir -->
+	<property name="format_sql">false</property>
+	<!-- Hibernate'e otomatik tablo oluşturma özelliğini aktif ediyoruz. create-drop ,
+	update: tabloları drop etmez, varolan oluşturduğu tablo üzerine yeni kolonlar eklmek için 
+	kullanılır.
+	validate: artık tasarıma dair herşey bitmiştir yeni tablo oluşturmaz, varolan tablolarıda
+	 droplamaz.-->
+	<property name="hibernate.hbm2ddl.auto">update</property>
+  
+  	<!-- Entity dosyalarına bağlı olan xml'ler buraya eklenir -->
+  	<mapping class="entity.Student" />
+    <mapping class="entity.Department" />
+    <mapping class="entity.Course" />
+    <mapping class="entity.Address" />
+  </session-factory>
+</hibernate-configuration>
